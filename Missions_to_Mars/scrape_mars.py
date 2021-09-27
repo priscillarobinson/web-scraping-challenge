@@ -90,13 +90,13 @@ def scrape_all():
     #     time.sleep(1)
         html_hemisphere = browser.html
         hemi_soup = BeautifulSoup(html_hemisphere, "html.parser")
-        hemisphere['img_url'] = hemi_soup.find("a", text="Sample").get("href")
+        hemisphere['img_url'] = url_hemisphere + hemi_soup.find("a", text="Sample").get("href")
         hemisphere['title'] = hemi_soup.find("h2", class_="title").get_text()
         hemisphere_image_urls.append(hemisphere)
         browser.back()
         
     # hemisphere_image_urls
-    data["hemisphere"] = hemisphere_image_urls
+    data["hemispheres"] = hemisphere_image_urls
 
     browser.quit()
 
